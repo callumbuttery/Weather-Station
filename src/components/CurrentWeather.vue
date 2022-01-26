@@ -49,11 +49,11 @@ export default {
   async beforeMount() {
     await axios
       .get(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_WEATHER_API_KEY}&q=London&aqi=yes`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_WEATHER_API_KEY}&q=Glasgow&aqi=yes`
       )
       .then((response) => this.breakdownApi(response));
 
-    console.log(this.rawApiData);
+    //console.log(this.rawApiData);
   },
 };
 </script>
