@@ -13,16 +13,19 @@
             <v-card-title class="display-2 mb-2 justify-center"
               >Weather Station</v-card-title
             >
+            <v-row>
+              <Search />
+            </v-row>
           </v-col>
         </v-card>
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="6" md="4" >
-        <CurrentWeather/>
+      <v-col cols="6" md="4">
+        <CurrentWeather />
       </v-col>
-      <v-col cols="12" sm="4" md="8" >
-        <NextThreeDays/>
+      <v-col cols="12" sm="4" md="8">
+        <NextThreeDays />
       </v-col>
     </v-row>
   </v-container>
@@ -31,12 +34,14 @@
 <script>
 import CurrentWeather from "./CurrentWeather";
 import NextThreeDays from "./NextThreeDays";
+import Search from "./Search";
 
 export default {
   name: "WeatherBase",
   components: {
     CurrentWeather,
     NextThreeDays,
+    Search,
   },
 };
 </script>
