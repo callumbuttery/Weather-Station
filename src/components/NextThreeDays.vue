@@ -2,7 +2,7 @@
   <v-container>
     <v-row no-gutters>
       <v-col>
-        <v-card class="amber lighten-1">
+        <v-card class="amber lighten-1" elevation="14">
           <v-card-title class="text-h4 white--text justify-center"
             >3 Day Forecast</v-card-title
           >

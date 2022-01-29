@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        <v-card color="blue">
+        <v-card color="blue" elevation="14">
           <v-img
             :src="require('../assets/weather.png')"
             class="my-3"
