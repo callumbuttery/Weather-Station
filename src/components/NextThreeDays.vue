@@ -2,48 +2,63 @@
   <v-container>
     <v-row no-gutters>
       <v-col>
-        <v-card>
-          <v-card-title class="text-h4 justify-center"
+        <v-card class="amber lighten-1">
+          <v-card-title class="text-h4 white--text justify-center"
             >3 Day Forecast</v-card-title
           >
 
+          <v-card-title
+            class="justify-center text-h5 white--text amber lighten-1"
+          >
+            {{ this.currentLocation }}
+          </v-card-title>
+
           <v-row no-gutters>
             <v-col>
-              <v-card class="pa-2 text-center" outlined tile>
+              <v-card class="pa-2 text-center amber lighten-3" outlined tile>
                 <v-img
                   class="mx-auto"
-                  :src="this.dayOne.condition.icon"
+                  :src="this.days[0].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
                 <v-card-subtitle class="text-h5 justify-center">{{
-                  this.dateToDateOne
+                  this.dates[0]
+                }}</v-card-subtitle>
+                <v-card-subtitle class="text-h6 justify-center">{{
+                  this.days[0].avgtemp_c + "C/" + this.days[0].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
             </v-col>
             <v-col>
-              <v-card class="pa-2 text-center" outlined tile>
+              <v-card class="pa-2 text-center amber lighten-4" outlined tile>
                 <v-img
                   class="mx-auto"
-                  :src="this.dayTwo.condition.icon"
+                  :src="this.days[1].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
                 <v-card-subtitle class="text-h5 justify-center">{{
-                  this.dateToDateTwo
+                  this.dates[1]
+                }}</v-card-subtitle>
+                <v-card-subtitle class="text-h6 justify-center">{{
+                  this.days[1].avgtemp_c + "C/" + this.days[1].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
             </v-col>
             <v-col>
-              <v-card class="pa-2 text-center" outlined tile>
+              <v-card class="pa-2 text-center amber lighten-3" outlined tile>
                 <v-img
                   class="mx-auto"
-                  :src="this.dayThree.condition.icon"
+                  :src="this.days[2].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
                 <v-card-subtitle class="text-h5 justify-center">{{
-                  this.dateToDateThree
+                  this.dates[2]
+                }}</v-card-subtitle>
+                <v-card-subtitle class="text-h6 justify-center">{{
+                  this.days[2].avgtemp_c + "C/" + this.days[2].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
             </v-col>
@@ -70,25 +85,33 @@ export default {
       dateToDateTwo: "",
       dateToDateThree: "",
 
+      days: [],
+      dates: [],
+      weekdays: [],
+      weekday: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
     };
   },
 
   methods: {
     breakdown3DayApi: function (apiData) {
-      console.log(apiData);
       this.rawApiData = apiData.data.current;
       this.currentLocation = apiData.data.location.name;
       this.currentWeatherImg = apiData.data.current.condition.icon;
 
-      this.dayOne = apiData.data.forecast.forecastday[0].day;
-      this.dayTwo = apiData.data.forecast.forecastday[1].day;
-      this.dayThree = apiData.data.forecast.forecastday[2].day;
+      const forecast = apiData.data.forecast.forecastday;
 
-      this.dateToDateOne = apiData.data.forecast.forecastday[0].date;
-      this.dateToDateTwo = apiData.data.forecast.forecastday[1].date;
-      this.dateToDateThree = apiData.data.forecast.forecastday[2].date;
-
-      //console.log(this.dayThree);
+      for (var i = 0; i < forecast.length; i++) {
+        this.days.push(forecast[i].day);
+        this.dates.push(forecast[i].date);
+      }
     },
   },
 

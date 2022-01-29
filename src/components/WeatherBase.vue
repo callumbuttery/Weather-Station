@@ -22,7 +22,7 @@
         <CurrentWeather/>
       </v-col>
       <v-col cols="12" sm="4" md="8" >
-        <NextFiveDays/>
+        <NextThreeDays/>
       </v-col>
     </v-row>
   </v-container>
@@ -30,13 +30,13 @@
 
 <script>
 import CurrentWeather from "./CurrentWeather";
-import NextFiveDays from "./NextFiveDays";
+import NextThreeDays from "./NextThreeDays";
 
 export default {
   name: "WeatherBase",
   components: {
     CurrentWeather,
-    NextFiveDays,
+    NextThreeDays,
   },
 };
 </script>

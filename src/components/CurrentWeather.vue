@@ -2,23 +2,23 @@
   <v-container>
     <v-row class="text-center" no-gutters>
       <v-col>
-        <v-card color="white">
-          <v-card-title class="text-h4 justify-center"
+        <v-card color="purple darken-3">
+          <v-card-title class="text-h4 white--text purple darken-1 justify-center"
             >Current Weather</v-card-title
           >
-          <v-card-subtitle class="text-h5 justify-center">{{
+          <v-card-title class="text-h5 white--text purple darken-1 justify-center">{{
             this.currentLocation
-          }}</v-card-subtitle>
-          <v-card-subtitle class="text-h5 justify-center">{{
-            this.rawApiData.temp_c + "C" + " / " + this.rawApiData.temp_f + "F"
-          }}</v-card-subtitle>
-
+          }}</v-card-title>
           <v-img
             class="mx-auto"
             :src="this.currentWeatherImg"
             max-height="125"
             max-width="125"
           ></v-img>
+          <v-card-subtitle class="text-h5 white--text purple darken-1 justify-center">{{
+            this.rawApiData.temp_c + "C" + " / " + this.rawApiData.temp_f + "F"
+          }}</v-card-subtitle>
+
         </v-card>
       </v-col>
     </v-row>
