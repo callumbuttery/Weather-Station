@@ -2,62 +2,62 @@
   <v-container>
     <v-row no-gutters>
       <v-col>
-        <v-card class="amber lighten-1" elevation="14">
+        <v-card class="purple darken-1" elevation="14">
           <v-card-title class="text-h4 white--text justify-center"
             >3 Day Forecast</v-card-title
           >
 
           <v-card-title
-            class="justify-center text-h5 white--text amber lighten-1"
+            class="justify-center text-h5 white--text purple darken-1"
           >
             {{ this.currentLocation }}
           </v-card-title>
 
           <v-row no-gutters>
             <v-col>
-              <v-card class="pa-2 text-center amber lighten-3" outlined tile>
+              <v-card class="pa-2 text-center purple darken-3" outlined tile>
                 <v-img
                   class="mx-auto"
                   :src="this.days[0].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
-                <v-card-subtitle class="text-h5 justify-center">{{
+                <v-card-subtitle class="text-h5 justify-center white--text">{{
                   this.dates[0]
                 }}</v-card-subtitle>
-                <v-card-subtitle class="text-h6 justify-center">{{
+                <v-card-subtitle class="text-h6 justify-center white--text">{{
                   this.days[0].avgtemp_c + "C/" + this.days[0].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
             </v-col>
             <v-col>
-              <v-card class="pa-2 text-center amber lighten-4" outlined tile>
+              <v-card class="pa-2 text-center purple darken-4" outlined tile>
                 <v-img
                   class="mx-auto"
                   :src="this.days[1].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
-                <v-card-subtitle class="text-h5 justify-center">{{
+                <v-card-subtitle class="text-h5 justify-center white--text">{{
                   this.dates[1]
                 }}</v-card-subtitle>
-                <v-card-subtitle class="text-h6 justify-center">{{
+                <v-card-subtitle class="text-h6 justify-center white--text">{{
                   this.days[1].avgtemp_c + "C/" + this.days[1].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
             </v-col>
             <v-col>
-              <v-card class="pa-2 text-center amber lighten-3" outlined tile>
+              <v-card class="pa-2 text-center purple darken-3 white--text" outlined tile>
                 <v-img
                   class="mx-auto"
                   :src="this.days[2].condition.icon"
                   max-height="50"
                   max-width="50"
                 ></v-img>
-                <v-card-subtitle class="text-h5 justify-center">{{
+                <v-card-subtitle class="text-h5 justify-center white--text">{{
                   this.dates[2]
                 }}</v-card-subtitle>
-                <v-card-subtitle class="text-h6 justify-center">{{
+                <v-card-subtitle class="text-h6 justify-center white--text">{{
                   this.days[2].avgtemp_c + "C/" + this.days[2].avgtemp_f + "F"
                 }}</v-card-subtitle>
               </v-card>
