@@ -14,7 +14,7 @@
               >Weather Station</v-card-title
             >
             <v-row>
-              <Search />
+              <Search v-on:changeLocation="updateLocation($event)"/>
             </v-row>
           </v-col>
         </v-card>
@@ -22,10 +22,10 @@
     </v-row>
     <v-row>
       <v-col cols="6" md="4">
-        <CurrentWeather />
+        <CurrentWeather :search="this.$props.search"/>
       </v-col>
       <v-col cols="12" sm="4" md="8">
-        <NextThreeDays />
+        <NextThreeDays :search="this.$props.search"/>
       </v-col>
     </v-row>
   </v-container>
@@ -38,10 +38,20 @@ import Search from "./Search";
 
 export default {
   name: "WeatherBase",
+  props: {
+    search: String,
+  },
   components: {
     CurrentWeather,
     NextThreeDays,
     Search,
+  },
+  methods: {
+    updateLocation: function(location) {
+      if (location) {
+        this.$props.search = location;
+      }
+    } 
   },
 };
 </script>

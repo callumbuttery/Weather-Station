@@ -27,7 +27,6 @@
               "F"
             }}</v-card-subtitle
           >
-
         </v-card>
       </v-col>
     </v-row>
@@ -39,7 +38,9 @@ import axios from "axios";
 
 export default {
   name: "CurrentWeather",
-
+  props: {
+    search: String,
+  },
   data() {
     return {
       rawApiData: "",
@@ -47,6 +48,7 @@ export default {
       currentWeatherImg: "",
       absolute: true,
       overlay: false,
+      locationToSearch: "Glasgow",
     };
   },
   methods: {
@@ -55,16 +57,24 @@ export default {
       this.currentLocation = apiData.data.location.name;
       this.currentWeatherImg = apiData.data.current.condition.icon;
     },
+    callApi: async function () {
+      console.log(this.$props.search);
+      await axios
+        .get(
+          `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_WEATHER_API_KEY}&q=${this.$props.search || this.locationToSearch}&aqi=yes`
+        )
+        .then((response) => this.breakdownApi(response));
+    },
   },
 
-  async beforeMount() {
-    await axios
-      .get(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_WEATHER_API_KEY}&q=Glasgow&aqi=yes`
-      )
-      .then((response) => this.breakdownApi(response));
-
-    //console.log(this.rawApiData);
+  beforeMount() {
+    this.callApi();
+  },
+  //listen for prop change then re-search the api
+  watch: {
+    "search": function() {
+      this.callApi();
+    }
   },
 };
 </script>

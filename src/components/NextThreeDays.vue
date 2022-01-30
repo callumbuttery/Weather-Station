@@ -47,7 +47,11 @@
               </v-card>
             </v-col>
             <v-col>
-              <v-card class="pa-2 text-center purple darken-3 white--text" outlined tile>
+              <v-card
+                class="pa-2 text-center purple darken-3 white--text"
+                outlined
+                tile
+              >
                 <v-img
                   class="mx-auto"
                   :src="this.days[2].condition.icon"
@@ -74,7 +78,9 @@ import axios from "axios";
 
 export default {
   name: "NextFiveDays",
-
+  props: {
+    search: String,
+  },
   data() {
     return {
       fiveDays: "",
@@ -97,6 +103,7 @@ export default {
         "Friday",
         "Saturday",
       ],
+      locationToSearch: "Glasgow",
     };
   },
 
@@ -113,14 +120,26 @@ export default {
         this.dates.push(forecast[i].date);
       }
     },
+    callApi: async function () {
+      await axios
+        .get(
+          `http://api.weatherapi.com/v1/forecast.json?key=${
+            process.env.VUE_APP_WEATHER_API_KEY
+          }&q=${
+            this.$props.search || this.locationToSearch
+          }&days=5&aqi=no&alerts=no`
+        )
+        .then((response) => this.breakdown3DayApi(response));
+    },
   },
 
-  async beforeMount() {
-    await axios
-      .get(
-        `http://api.weatherapi.com/v1/forecast.json?key=${process.env.VUE_APP_WEATHER_API_KEY}&q=Glasgow&days=5&aqi=no&alerts=no`
-      )
-      .then((response) => this.breakdown3DayApi(response));
+  beforeMount() {
+    this.callApi();
+  },
+  watch: {
+    search: function () {
+      this.callApi();
+    },
   },
 };
 </script>

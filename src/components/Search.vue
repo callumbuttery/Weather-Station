@@ -8,6 +8,7 @@
           outline
           single-line
           placeholder="Search Location"
+          :msg="input"
           v-model="input"
         ></v-text-field
       ></v-card>
@@ -31,6 +32,8 @@ export default {
         alert("Please enter a valid location");
         return;
       }
+
+      this.$emit('changeLocation', this.input);
 
     }
   }
