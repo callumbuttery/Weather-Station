@@ -15,58 +15,103 @@
             </v-card-title>
 
             <v-row no-gutters>
-              <v-col>
-                <v-card class="pa-2 text-center purple darken-3" outlined tile>
-                  <v-img
-                    class="mx-auto"
-                    :src="this.days[0].condition.icon"
-                    max-height="50"
-                    max-width="50"
-                  ></v-img>
-                  <v-card-subtitle class="text-h5 justify-center white--text">{{
-                    this.dates[0]
-                  }}</v-card-subtitle>
-                  <v-card-subtitle class="text-h6 justify-center white--text">{{
-                    this.days[0].avgtemp_c + "C/" + this.days[0].avgtemp_f + "F"
-                  }}</v-card-subtitle>
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card class="pa-2 text-center purple darken-4" outlined tile>
-                  <v-img
-                    class="mx-auto"
-                    :src="this.days[1].condition.icon"
-                    max-height="50"
-                    max-width="50"
-                  ></v-img>
-                  <v-card-subtitle class="text-h5 justify-center white--text">{{
-                    this.dates[1]
-                  }}</v-card-subtitle>
-                  <v-card-subtitle class="text-h6 justify-center white--text">{{
-                    this.days[1].avgtemp_c + "C/" + this.days[1].avgtemp_f + "F"
-                  }}</v-card-subtitle>
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card
-                  class="pa-2 text-center purple darken-3 white--text"
-                  outlined
-                  tile
-                >
-                  <v-img
-                    class="mx-auto"
-                    :src="this.days[2].condition.icon"
-                    max-height="50"
-                    max-width="50"
-                  ></v-img>
-                  <v-card-subtitle class="text-h5 justify-center white--text">{{
-                    this.dates[2]
-                  }}</v-card-subtitle>
-                  <v-card-subtitle class="text-h6 justify-center white--text">{{
-                    this.days[2].avgtemp_c + "C/" + this.days[2].avgtemp_f + "F"
-                  }}</v-card-subtitle>
-                </v-card>
-              </v-col>
+              <v-carousel
+                v-model="model"
+                height="260px"
+                hide-delimiter-background
+                delimiter-icon="mdi-minus"
+                :show-arrows="false"
+                :continuous="true"
+                :cycle="cycle"
+              >
+                <v-col>
+                  <v-carousel-item>
+                    <v-card
+                      class="pa-2 text-center purple darken-3"
+                      outlined
+                      tile
+                    >
+                      <v-img
+                        class="mx-auto"
+                        :src="this.days[0].condition.icon"
+                        max-height="50"
+                        max-width="50"
+                      ></v-img>
+                      <v-card-subtitle
+                        class="text-h5 justify-center white--text"
+                        >{{ this.dates[0] }}</v-card-subtitle
+                      >
+                      <v-card-subtitle
+                        class="text-h6 justify-center white--text"
+                        >{{
+                          this.days[0].avgtemp_c +
+                          "C/" +
+                          this.days[0].avgtemp_f +
+                          "F"
+                        }}</v-card-subtitle
+                      >
+                    </v-card>
+                  </v-carousel-item>
+                </v-col>
+                <v-col>
+                  <v-carousel-item>
+                    <v-card
+                      class="pa-2 text-center purple darken-4"
+                      outlined
+                      tile
+                    >
+                      <v-img
+                        class="mx-auto"
+                        :src="this.days[1].condition.icon"
+                        max-height="50"
+                        max-width="50"
+                      ></v-img>
+                      <v-card-subtitle
+                        class="text-h5 justify-center white--text"
+                        >{{ this.dates[1] }}</v-card-subtitle
+                      >
+                      <v-card-subtitle
+                        class="text-h6 justify-center white--text"
+                        >{{
+                          this.days[1].avgtemp_c +
+                          "C/" +
+                          this.days[1].avgtemp_f +
+                          "F"
+                        }}</v-card-subtitle
+                      >
+                    </v-card>
+                  </v-carousel-item>
+                </v-col>
+                <v-col>
+                  <v-carousel-item>
+                    <v-card
+                      class="pa-2 text-center purple darken-3 white--text"
+                      outlined
+                      tile
+                    >
+                      <v-img
+                        class="mx-auto"
+                        :src="this.days[2].condition.icon"
+                        max-height="50"
+                        max-width="50"
+                      ></v-img>
+                      <v-card-subtitle
+                        class="text-h5 justify-center white--text"
+                        >{{ this.dates[2] }}</v-card-subtitle
+                      >
+                      <v-card-subtitle
+                        class="text-h6 justify-center white--text"
+                        >{{
+                          this.days[2].avgtemp_c +
+                          "C/" +
+                          this.days[2].avgtemp_f +
+                          "F"
+                        }}</v-card-subtitle
+                      >
+                    </v-card>
+                  </v-carousel-item>
+                </v-col>
+              </v-carousel>
             </v-row>
           </v-card>
         </v-skeleton-loader>

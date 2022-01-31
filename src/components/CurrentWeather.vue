@@ -3,7 +3,7 @@
     <v-row class="text-center" no-gutters>
       <v-col>
         <v-skeleton-loader class="mx-auto" max-width="500" type="card">
-          <v-card color="purple darken-3" elevation="14">
+          <v-card color="purple darken-3" elevation="14" height="400px">
             <v-card-title
               class="text-h4 white--text purple darken-1 justify-center"
               >Current Weather</v-card-title
