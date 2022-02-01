@@ -31,8 +31,8 @@
             <v-btn color="white" class="mt-5" @click="overlay = !overlay">
               Details
             </v-btn>
-            <v-overlay :absolute="absolute" :value="overlay">
-              <v-card>
+            <v-overlay :absolute="absolute" :value="overlay" color="black">
+              <v-card class="purple darken-3">
                 <v-btn color="purple" @click="overlay = false">
                   Hide Details
                 </v-btn></v-card
