@@ -28,6 +28,16 @@
                 "F"
               }}</v-card-subtitle
             >
+            <v-btn color="white" class="mt-5" @click="overlay = !overlay">
+              Details
+            </v-btn>
+            <v-overlay :absolute="absolute" :value="overlay">
+              <v-card>
+                <v-btn color="purple" @click="overlay = false">
+                  Hide Details
+                </v-btn></v-card
+              ></v-overlay
+            >
           </v-card>
         </v-skeleton-loader>
       </v-col>
