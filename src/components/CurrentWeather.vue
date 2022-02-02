@@ -20,19 +20,29 @@
             ></v-img>
             <v-card-subtitle
               class="text-h5 white--text purple darken-1 justify-center"
-              >{{
-                this.rawApiData.temp_c +
-                "C" +
-                " / " +
-                this.rawApiData.temp_f +
-                "F"
-              }}</v-card-subtitle
+              >{{ this.rawApiData.temp_c + "C" }}</v-card-subtitle
             >
             <v-btn color="white" class="mt-5" @click="overlay = !overlay">
               Details
             </v-btn>
             <v-overlay :absolute="absolute" :value="overlay" color="black">
               <v-card class="purple darken-3">
+                <v-card-subtitle
+                  class="text-h5 white--text justify-center"
+                  >{{ this.rawApiData.condition.text}}</v-card-subtitle
+                >
+                <v-card-subtitle
+                  class="text-h5 white--text justify-center"
+                  >{{ this.rawApiData.temp_f + "F"}}</v-card-subtitle
+                >
+                <v-card-subtitle
+                  class="text-h5 white--text justify-center"
+                  >{{ "Feels like: " + this.rawApiData.feelslike_c + "C"}}</v-card-subtitle
+                >
+                <v-card-subtitle
+                  class="text-h5 white--text justify-center"
+                  >{{ "Feels like: " + this.rawApiData.feelslike_f + "F"}}</v-card-subtitle
+                >
                 <v-btn color="purple" @click="overlay = false">
                   Hide Details
                 </v-btn></v-card
@@ -66,11 +76,11 @@ export default {
   methods: {
     breakdownApi: function (apiData) {
       this.rawApiData = apiData.data.current;
+      console.log(apiData.data);
       this.currentLocation = apiData.data.location.name;
       this.currentWeatherImg = apiData.data.current.condition.icon;
     },
     callApi: async function () {
-      console.log(this.$props.search);
       await axios
         .get(
           `https://api.weatherapi.com/v1/current.json?key=${
